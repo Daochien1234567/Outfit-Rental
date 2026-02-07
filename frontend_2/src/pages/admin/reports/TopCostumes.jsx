@@ -21,12 +21,26 @@ const TopCostumes = () => {
 
       // Map BE → FE
       const mapped = res.data.map(item => ({
+        // SELECT 
+        //   c.id,
+        //   c.name,
+        //   c.brand,
+        //   c.daily_price,
+        //   c.rental_count,
+        //   COUNT(DISTINCT r.id) as rental_times,
+        //   SUM(r.total_amount_paid) as total_revenue,
+        //   AVG(r.total_amount_paid) as avg_rental_value
+        // FROM costumes c
+        // LEFT JOIN rental_items ri ON c.id = ri.costume_id
+        // LEFT JOIN rentals r ON ri.rental_id = r.id AND r.payment_status = 'paid'
+        // WHERE c.status != 'deleted'
+
         id: item.id,
         name: item.name,
         brand: item.brand,
         dailyPrice: Number(item.daily_price),
-        rentalTimes: Number(item.rental_times),
-        totalRevenue: Number(item.total_revenue || 0),
+        rentalTimes: Number(item.rental_count),
+        totalRevenue: (item.total_revenue),
         avgRentalValue: Number(item.avg_rental_value || 0)
       }))
 

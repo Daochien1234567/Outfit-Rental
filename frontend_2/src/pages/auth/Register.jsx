@@ -60,11 +60,13 @@ const Register = () => {
     
     try {
       const result = await register({
-        name: formData.name,
+        
         email: formData.email,
+        password: formData.password,
+        full_name: formData.name,
         phone: formData.phone,
-        address: formData.address,
-        password: formData.password
+        address: formData.address
+        
       })
       
       if (result.success) {
@@ -72,7 +74,7 @@ const Register = () => {
       } else {
         setErrors({ general: result.error })
       }
-    } catch (err) {
+    } catch  {
       setErrors({ general: 'Registration failed. Please try again.' })
     } finally {
       setLoading(false)

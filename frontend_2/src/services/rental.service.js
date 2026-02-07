@@ -24,7 +24,7 @@ const rentalService = {
   
   // Update rental
   updateRental: async (id, rentalData) => {
-    return await axiosClient.put(`/rentals/${id}`, rentalData)
+    return await axiosClient.put(`/rentals/${id}/extend`, rentalData)
   },
   
   // Get rental history

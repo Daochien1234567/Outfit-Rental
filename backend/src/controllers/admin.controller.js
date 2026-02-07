@@ -869,7 +869,7 @@ const adminController = {
           AVG(r.total_amount_paid) as avg_rental_value
         FROM costumes c
         LEFT JOIN rental_items ri ON c.id = ri.costume_id
-        LEFT JOIN rentals r ON ri.rental_id = r.id AND r.payment_status = 'paid'
+        LEFT JOIN rentals r ON ri.rental_id = r.id
         WHERE c.status != 'deleted'
           ${dateCondition}
         GROUP BY c.id

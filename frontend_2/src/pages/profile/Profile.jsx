@@ -27,9 +27,9 @@ const Profile = () => {
       const rentals = response.rentals || []
       
       const totalOrders = rentals.length
-      const totalSpent = rentals.reduce((sum, rental) => sum + rental.totalAmount, 0)
+      const totalSpent = rentals.reduce((sum, rental) => sum + Number(rental.total_amount_paid), 0)
       const activeRentals = rentals.filter(r => 
-        ['pending', 'confirmed', 'out_for_delivery', 'renting'].includes(r.status)
+        ['pending', 'confirmed', 'out_for_delivery', 'renting'].includes(r.rental_status)
       ).length
       
       setStats({
@@ -95,7 +95,7 @@ const Profile = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="font-medium">Mật khẩu</p>
-                  <p className="text-sm text-gray-600">Cập nhật lần cuối cách đây 30 ngày</p>
+                  <p className="text-sm text-gray-600">Cập nhật lần cuối cách đây 2 ngày</p>
                 </div>
                 <Link to="/profile/change-password">
                   <Button variant="outline" size="sm">Đổi mật khẩu</Button>
@@ -144,7 +144,7 @@ const Profile = () => {
                     <div>
                       <p className="text-sm text-gray-600">Tổng chi tiêu</p>
                       <p className="text-2xl font-bold">
-                        {formatMoney(stats.totalSpent)}
+                        {(stats.totalSpent)}
                       </p>
                     </div>
                     <div className="text-blue-600">

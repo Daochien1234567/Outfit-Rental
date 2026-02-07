@@ -80,7 +80,7 @@ const OrderDetail = () => {
     try {
       setUpdating(true)
       await rentalService.updateRental(order.id, {
-        extend_days: Number(days)
+        additional_days: Number(days)
       })
       await fetchOrder()
     } catch (err) {

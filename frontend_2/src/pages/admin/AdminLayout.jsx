@@ -93,13 +93,7 @@ const AdminLayout = () => {
           </nav>
           
           <div className="absolute bottom-0 w-full p-4 border-t border-gray-700">
-            <button
-              onClick={handleLogout}
-              className="flex items-center space-x-2 text-gray-300 hover:text-white w-full px-4 py-2 rounded-lg hover:bg-gray-700"
-            >
-              <span>🚪</span>
-              <span>Logout</span>
-            </button>
+            
           </div>
         </div>
 

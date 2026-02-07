@@ -32,9 +32,12 @@ const ManageDeposits = () => {
       })
       
       if (res.data) {
-        setDeposits(res.data.deposits || [])
+        // r.id as rental_id, r.total_deposit, r.deposit_refund,
+        //         r.created_at, r.return_date, u.full_name, u.email,
+        //         (r.total_deposit - COALESCE(r.deposit_refund, 0)) as pending_refund
+        setDeposits(res.data.total_deposit || [])
         setTotalPages(res.data.pagination?.pages || 1)
-        calculateSummary(res.data.deposits || [])
+        calculateSummary(res.data.deposit_refund || [])
       }
     } catch (error) {
       console.error('Error fetching deposits:', error)
